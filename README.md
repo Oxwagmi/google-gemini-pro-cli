@@ -8,7 +8,7 @@ https://github.com/niluk-256/google-gemini-pro-cli/assets/67406138/604cfbcc-5916
 
 ### Usage 
 
-Get an apiKey for gemini-pro -> https://m
+Get an apiKey for gemini-pro -> https://makersuite.google.com/app/apikey
 
 
 
