@@ -7,15 +7,15 @@ import readline from "readline";
 import dotenv from "dotenv";
 import spinners from "cli-spinners";
 import chalk from "chalk";
-import {highlight} from 'cli-highlight';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import { resolve } from 'path'; 
+import { highlight } from "cli-highlight";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+import { resolve } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const envPath = resolve(__dirname, '.env'); 
+const envPath = resolve(__dirname, ".env");
 
 dotenv.config({ path: envPath });
 
@@ -59,23 +59,21 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 function getRandomSpinner() {
-  const spinnerOptions = ["dot", "pong", "shark","monkey"];
+  const spinnerOptions = ["dot", "pong", "shark", "monkey"];
   const randomIndex = Math.floor(Math.random() * spinnerOptions.length);
-  if(randomIndex == 0){
+  if (randomIndex == 0) {
     return spinners.dots;
-  }
-  else if (randomIndex ==1){
+  } else if (randomIndex == 1) {
     return spinners.pong;
+  } else if (randomIndex == 2) {
+    return spinners.flip;
+  } else {
+    return spinners.monkey;
   }
-  else if(randomIndex ==2){
-    return spinners.flip }
-  else {
-    return spinners.monkey
-  };
 }
 
 async function generateAndPrintResponse(prompt) {
-   const spinner = getRandomSpinner();
+  const spinner = getRandomSpinner();
   let frameIndex = 0;
   const interval = setInterval(() => {
     process.stdout.clearLine();
@@ -85,29 +83,32 @@ async function generateAndPrintResponse(prompt) {
   }, spinner.interval);
   try {
     const chat = model.startChat({
-    history:conversationHistory})
-const result = await chat.sendMessage(prompt);
+      history: conversationHistory,
+    });
+    const result = await chat.sendMessage(prompt);
     const response = result.response;
-    conversationHistory.push({ role: "user", parts: prompt });
-     clearInterval(interval); 
+    clearInterval(interval);
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
     const text = response.text();
-conversationHistory.push({ role: "model", parts: text });
-    if(text.includes("```")){
-      
-const startIndex = text.indexOf('```');
-const endIndex = text.indexOf('```', startIndex + 3);
-if (startIndex !== -1 && endIndex !== -1) {
-  const codeBlock = text.slice(startIndex + 3, endIndex); 
-      console.log(highlight(codeBlock, { language: 'javascript', ignoreIllegals: true }));
+    if(text){
+      conversationHistory.push({ role: "user", parts: prompt });
+      conversationHistory.push({ role: "model", parts: text });
     }
-        }
-    else {
-  console.log(chalk.blue("[+]" + text));
+    if (text.includes("```")) {
+      const startIndex = text.indexOf("```");
+      const endIndex = text.indexOf("```", startIndex + 3);
+      if (startIndex !== -1 && endIndex !== -1) {
+        const codeBlock = text.slice(startIndex + 3, endIndex);
+        console.log(
+          highlight(codeBlock, { language: "javascript", ignoreIllegals: true })
+        );
+      }
+    } else {
+      console.log(chalk.blue("[+]" + text));
     }
   } catch (err) {
-console.log(err);
+    console.log(err);
   }
 }
 
@@ -134,11 +135,12 @@ async function main() {
   }
 }
 
-main().then(() => {
+main()
+  .then(() => {
     console.log("Program exited");
     process.exit(0);
   })
   .catch((error) => {
     console.error("Error:", error);
     process.exit(1);
-  });;
+  });
