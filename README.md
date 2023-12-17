@@ -14,7 +14,7 @@ Get an apiKey for gemini-pro -> https://makersuite.google.com/app/apikey
 
 
 
-akersuite.google.com/app/apikey
+
 
 ``` bash 
 git clone https://github.com/niluk-256/google-gemini-pro-cli.git
