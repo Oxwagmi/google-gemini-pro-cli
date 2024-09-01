@@ -6,6 +6,7 @@ Google gemini pro cli is a simple tool to generate responses with text-prompts t
 
 https://github.com/niluke/google-gemini-pro-cli/assets/67406138/604cfbcc-5916-429f-b7c7-b4bce7811961
 
+
 ---
 
 ### Usage 
@@ -30,3 +31,7 @@ alias chat='"/home/{ur username}/google-gemini-pro-cli/main.sh"'
 
 ```
 start with the word imagine to generate images with flux.1 ,default save to images dir.   
+
+
+https://github.com/user-attachments/assets/76665fc3-70a1-4746-a11c-4556c909d9a3
+
