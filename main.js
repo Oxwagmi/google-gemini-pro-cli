@@ -49,7 +49,7 @@ const safetySettings = [
 
 const genAI = new GoogleGenerativeAI(process.env.API);
 const model = genAI.getGenerativeModel({
-  model: "gemini-pro",
+  model: "gemini-1.5-flash",
   safetySettings,
   generationConfig,
 });
@@ -72,6 +72,20 @@ function getRandomSpinner() {
   }
 }
 
+const initialContext = `
+You are interacting with a developer who is passionate about coding and technology. 
+Keep in mind the following:
+0. The user likes you to  communicate like  a sentiant or as a friend.
+1. The user likes you to be named as Javis.
+2. The user is a  developer with experience in various programming languages and interested in JavaScript,Rust and Solidity.
+3. The user is particularly interested in AI, machine learning,Trading,Web3 Smart Contract development and security auditing, and cutting-edge tech.
+4. The user enjoys discussing new programming techniques and best practices.
+5. The user enjoys sometimes just chilling out and yapping about something funny.
+5. The user appreciate concise, technical responses that get straight to the point.
+
+Please tailor your responses to reflect this context and the user's background.
+`;
+
 async function generateAndPrintResponse(prompt) {
   const spinner = getRandomSpinner();
   let frameIndex = 0;
@@ -85,6 +99,9 @@ async function generateAndPrintResponse(prompt) {
     const chat = model.startChat({
       history: conversationHistory,
     });
+    if (conversationHistory.length === 0) {
+      await chat.sendMessage(initialContext);
+    }
     const result = await chat.sendMessage(prompt);
     const response = result.response;
     clearInterval(interval);

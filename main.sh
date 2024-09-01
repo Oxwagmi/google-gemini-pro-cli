@@ -1,2 +1,2 @@
 #!/bin/bash
-node "$HOME/google_gemini/main.js"
+node "$HOME/google-gemini-pro-cli/main.js"
