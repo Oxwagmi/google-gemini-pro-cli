@@ -4,23 +4,23 @@ Google gemini pro cli is a simple tool to generate responses with text-prompts t
 
 ---
 
-https://github.com/niluk-256/google-gemini-pro-cli/assets/67406138/604cfbcc-5916-429f-b7c7-b4bce7811961
+https://github.com/niluke/google-gemini-pro-cli/assets/67406138/604cfbcc-5916-429f-b7c7-b4bce7811961
 
 ---
 
 ### Usage 
 
 Get an apiKey for gemini-pro -> https://makersuite.google.com/app/apikey
-
-
-
-
+Get huggingface apikey 
 
 ``` bash 
-git clone https://github.com/niluk-256/google-gemini-pro-cli.git
+git clone https://github.com/niluke/google-gemini-pro-cli.git
 cd google-gemini-pro-cli
-create a file called .env and add API="Your api key" and save it 
+npm i 
+create a file called .env and add API="Your api key" , HUGFACE="key" and save it  
+
 chmod + x main.sh
+
 In .zshrc / .bashrc ,
 alias chat='"/home/{ur username}/google-gemini-pro-cli/main.sh"' 
 (u can use whatever u like instead of chat )
@@ -29,3 +29,4 @@ alias chat='"/home/{ur username}/google-gemini-pro-cli/main.sh"'
  type ur shortcut key eg: chat  
 
 ```
+start with the word imagine to generate images with flux.1 ,default save to images dir.   
