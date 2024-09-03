@@ -2,13 +2,6 @@
 
 Google gemini pro cli is a simple tool to generate responses with text-prompts through the terminal using the Google's Gemini Pro language model.
 
----
-
-https://github.com/niluke/google-gemini-pro-cli/assets/67406138/604cfbcc-5916-429f-b7c7-b4bce7811961
-
-
----
-
 ### Usage 
 
 Get an apiKey for gemini-pro -> https://makersuite.google.com/app/apikey
