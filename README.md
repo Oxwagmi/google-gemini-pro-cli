@@ -8,7 +8,7 @@ Get an apiKey for gemini-pro -> https://makersuite.google.com/app/apikey
 Get huggingface apikey 
 
 ``` bash 
-git clone https://github.com/niluke/google-gemini-pro-cli.git
+git clone the repo
 cd google-gemini-pro-cli
 npm i 
 create a file called .env and add API="Your api key" , HUGFACE="key" and save it  
